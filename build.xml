@@ -27,7 +27,7 @@
         <mkdir dir="${cache.dir}" />
     </target>
 
-    <target name="build" depends="phplint, phpcs, phpunit" />
+    <target name="build" depends="phplint, phpcs, phpunit, phpmd" />
 
     <target name="phpcs" depends="prepare">
         <phpcodesniffer standard="PSR2">
@@ -52,6 +52,12 @@
                 <fileset refid="test.files" />
             </batchtest>
         </phpunit>
+    </target>
+
+    <target name="phpmd" description="Check for code smells" depends="prepare">
+        <phpmd>
+            <fileset refid="php.files" />
+        </phpmd>
     </target>
 
 </project>

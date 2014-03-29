@@ -19,6 +19,7 @@ class Currency extends Number
      */
     public function parse($value)
     {
+        $curr = null;
         return $this->formatter->parseCurrency($value, $curr);
     }
 }
