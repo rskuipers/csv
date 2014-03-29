@@ -21,6 +21,9 @@ installPearTask ()
         pear upgrade pear.phing.info/phing ||
         pear install --alldeps pear.phing.info/phing
         pear install PHP_CodeSniffer
+        pear channel-discover pear.phpmd.org
+        pear channel-discover pear.pdepend.org
+        pear install --alldeps phpmd/PHP_PMD
 
     # update paths
     phpenv rehash
