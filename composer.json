@@ -1,7 +1,8 @@
 {
-    "name": "rskuipers/rk_csv",
+    "name": "rskuipers/csv",
     "type": "library",
     "description": "Simple CSV library for Magento",
+    "homepage": "https://github.com/rskuipers/csv",
     "license": "MIT",
     "authors": [
         {
