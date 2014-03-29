@@ -1,0 +1,18 @@
+{
+    "name": "rskuipers/rk_csv",
+    "type": "library",
+    "description": "Simple CSV library for Magento",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rick Kuipers"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "ext-intl": "*"
+    },
+    "autoload": {
+        "psr-0": { "RSKuipers": ["src/", "tests/"] }
+    }
+}

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="RSKuipers/CSV" default="build" basedir=".">
+
+    <property name="src.dir" value="src" />
+    <property name="tests.dir" value="tests" />
+    <property name="build.dir" value="build" />
+    <property name="cache.dir" value="${build.dir}/cache" />
+
+    <patternset id="php.patterns">
+        <include name="${src.dir}/**/*.php" />
+    </patternset>
+
+    <patternset id="test.patterns">
+        <include name="${tests.dir}/**/*Test.php" />
+    </patternset>
+
+    <fileset dir="${project.basedir}" id="php.files">
+        <patternset refid="php.patterns" />
+    </fileset>
+
+    <fileset dir="${project.basedir}" id="test.files">
+        <patternset refid="test.patterns" />
+    </fileset>
+
+    <target name="prepare">
+        <mkdir dir="${build.dir}" />
+        <mkdir dir="${cache.dir}" />
+    </target>
+
+    <target name="build" depends="phplint, phpcs, phpunit" />
+
+    <target name="phpcs" depends="prepare">
+        <phpcodesniffer standard="PSR2">
+            <fileset refid="php.files" />
+            <formatter type="full" usefile="false" />
+        </phpcodesniffer>
+    </target>
+
+    <target name="phplint" description="Check for syntax errors" depends="prepare">
+        <phplint haltonfailure="true" cachefile="${project.basedir}/build/cache/phplint.cache">
+            <fileset dir="${project.basedir}">
+                <patternset refid="php.patterns" />
+                <patternset refid="test.patterns" />
+            </fileset>
+        </phplint>
+    </target>
+
+    <target name="phpunit" description="Runs the PHPUnit test suite" depends="prepare">
+        <phpunit bootstrap="vendor/autoload.php"  haltonerror="true" haltonfailure="true">
+            <formatter type="summary" usefile="false" />
+            <batchtest>
+                <fileset refid="test.files" />
+            </batchtest>
+        </phpunit>
+    </target>
+
+</project>
