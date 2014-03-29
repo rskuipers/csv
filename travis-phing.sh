@@ -1,4 +1,4 @@
-#!/bin/bashoracle-java8-installer
+#!/bin/bash
 #-----------------------------------------------------------
 #
 # Purpose: Run phing in a travis environment
