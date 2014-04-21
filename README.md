@@ -88,8 +88,9 @@ echo $row['Stock']; // 2093230
 
 ## Tests
 
-Run Phing to execute PHPLint, PHPCS and PHPUnit
+Run Phing to execute PHPLint, PHPCS, PHPMD and PHPUnit.
+Make sure you used composer install/update with the dev dependencies.
 
 ```sh
-$ phing
+$ ./vendor/bin/phing
 ```
