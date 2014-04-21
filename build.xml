@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="RSKuipers/CSV" default="build" basedir=".">
+<project name="RSKuipers/CSV" default="build">
 
-    <property name="src.dir" value="src" />
-    <property name="tests.dir" value="tests" />
-    <property name="build.dir" value="build" />
+    <property name="src.dir" value="${project.basedir}/src" />
+    <property name="tests.dir" value="${project.basedir}/tests" />
+    <property name="build.dir" value="${project.basedir}/build" />
     <property name="cache.dir" value="${build.dir}/cache" />
+    <property name="bin.dir" value="${project.basedir}/vendor/bin" />
 
     <patternset id="php.patterns">
         <include name="${src.dir}/**/*.php" />
@@ -46,7 +47,7 @@
     </target>
 
     <target name="phpunit" description="Runs the PHPUnit test suite" depends="prepare">
-	<exec command="phpunit" passthru="true" checkreturn="true" />
+	<exec command="${bin.dir}/phpunit" passthru="true" checkreturn="true" />
     </target>
 
     <target name="phpmd" description="Check for code smells" depends="prepare">
