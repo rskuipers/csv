@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="RSKuipers/CSV" default="build">
 
-    <property name="src.dir" value="${project.basedir}/src" />
-    <property name="tests.dir" value="${project.basedir}/tests" />
-    <property name="build.dir" value="${project.basedir}/build" />
+    <property name="src.dir" value="src" />
+    <property name="tests.dir" value="tests" />
+    <property name="build.dir" value="build" />
     <property name="cache.dir" value="${build.dir}/cache" />
-    <property name="bin.dir" value="${project.basedir}/vendor/bin" />
+    <property name="bin.dir" value="vendor/bin" />
 
     <patternset id="php.patterns">
         <include name="${src.dir}/**/*.php" />
@@ -28,7 +28,7 @@
         <mkdir dir="${cache.dir}" />
     </target>
 
-    <target name="build" depends="phplint, phpcs, phpunit, phpmd" />
+    <target name="build" depends="phplint, phpcs, phpunit, phpmd, phpdepend" />
 
     <target name="phpcs" depends="prepare">
         <phpcodesniffer standard="PSR2">
@@ -38,7 +38,7 @@
     </target>
 
     <target name="phplint" description="Check for syntax errors" depends="prepare">
-        <phplint haltonfailure="true" cachefile="${project.basedir}/build/cache/phplint.cache">
+        <phplint haltonfailure="true" cachefile="${cache.dir}/phplint.cache">
             <fileset dir="${project.basedir}">
                 <patternset refid="php.patterns" />
                 <patternset refid="test.patterns" />
@@ -54,6 +54,13 @@
         <phpmd>
             <fileset refid="php.files" />
         </phpmd>
+    </target>
+
+    <target name="phpdepend" depends="prepare">
+        <phpdepend>
+            <fileset refid="php.files" />
+            <logger outfile="${build.dir}/phpdepend.xml" type="summary-xml" />
+        </phpdepend>
     </target>
 
 </project>
