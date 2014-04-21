@@ -46,12 +46,7 @@
     </target>
 
     <target name="phpunit" description="Runs the PHPUnit test suite" depends="prepare">
-        <phpunit bootstrap="vendor/autoload.php"  haltonerror="true" haltonfailure="true">
-            <formatter type="summary" usefile="false" />
-            <batchtest>
-                <fileset refid="test.files" />
-            </batchtest>
-        </phpunit>
+	<exec command="phpunit" passthru="true" checkreturn="true" />
     </target>
 
     <target name="phpmd" description="Check for code smells" depends="prepare">
