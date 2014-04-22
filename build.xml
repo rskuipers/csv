@@ -47,7 +47,7 @@
     </target>
 
     <target name="phpunit" description="Runs the PHPUnit test suite" depends="prepare">
-	<exec command="${bin.dir}/phpunit" passthru="true" checkreturn="true" />
+        <exec command="${bin.dir}/phpunit" passthru="true" checkreturn="true" />
     </target>
 
     <target name="phpmd" description="Check for code smells" depends="prepare">
