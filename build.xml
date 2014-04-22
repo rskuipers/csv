@@ -28,7 +28,7 @@
         <mkdir dir="${cache.dir}" />
     </target>
 
-    <target name="build" depends="phplint, phpcs, phpunit, phpmd, phpdepend" />
+    <target name="build" depends="phplint, phpcs, phpunit, phpmd, phpdepend, phpcpd, phploc" />
 
     <target name="phpcs" depends="prepare">
         <phpcodesniffer standard="PSR2">
@@ -61,6 +61,19 @@
             <fileset refid="php.files" />
             <logger outfile="${build.dir}/phpdepend.xml" type="summary-xml" />
         </phpdepend>
+    </target>
+
+    <target name="phpcpd" depends="prepare">
+        <phpcpd>
+            <fileset refid="php.files" />
+            <formatter type="pmd" outfile="${build.dir}/phpcpd.xml" />
+        </phpcpd>
+    </target>
+
+    <target name="phploc" depends="prepare">
+        <phploc reportType="cli">
+            <fileset refid="php.files" />
+        </phploc>
     </target>
 
 </project>

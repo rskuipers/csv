@@ -18,9 +18,17 @@
         "squizlabs/php_codesniffer": "~1.5.0",
         "phpunit/phpunit": "~4.0.0",
         "phpmd/phpmd": "~1.5.0",
-        "sebastian/phpcpd": "~2.0.0"
+        "pdepend/pdepend" : "~1.1.0",
+        "sebastian/phpcpd": "~2.0.0",
+        "phploc/phploc": "~2.0.0"
     },
     "autoload": {
         "psr-0": { "RSKuipers": ["src/", "tests/"] }
-    }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/rskuipers/phing"
+        }
+    ]
 }
