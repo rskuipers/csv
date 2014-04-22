@@ -24,11 +24,5 @@
     },
     "autoload": {
         "psr-0": { "RSKuipers": ["src/", "tests/"] }
-    },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/rskuipers/phing"
-        }
-    ]
+    }
 }
