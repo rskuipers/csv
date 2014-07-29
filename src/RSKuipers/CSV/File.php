@@ -99,6 +99,9 @@ class File extends \SplFileObject
                     continue;
                 }
                 $row = array_combine($this->mapping, $row);
+                if ($row === false) {
+                    throw new RK_Csv_Exception_InvalidMappingException('Mapping doesn\'t match for row #' . ($this->position+1));
+                }
             } elseif ($this->mappingMode == self::CUSTOM) {
                 if ($this->position == $this->columnTitlesIndex) {
                     continue;
@@ -107,6 +110,9 @@ class File extends \SplFileObject
                     throw new InvalidMappingException('Mapping is set to custom but no mapping was found.');
                 }
                 $row = array_combine($this->mapping, $row);
+                if ($row === false) {
+                    throw new RK_Csv_Exception_InvalidMappingException('Mapping doesn\'t match for row #' . ($this->position+1));
+                }
             } else {
                 if ($this->position == $this->columnTitlesIndex) {
                     continue;
